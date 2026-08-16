@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import { NAV_ITEMS } from '../core/navConfig'
+import { SUITES } from '../core/suites'
 import './Shell.css'
 
 export default function Shell() {
@@ -8,15 +8,14 @@ export default function Shell() {
       <nav className="sidebar">
         <div className="sidebar-title">Life OS</div>
         <ul>
-          {NAV_ITEMS.map((item) => (
-            <li key={item.path}>
+          {SUITES.map((suite) => (
+            <li key={suite.path}>
               <NavLink
-                to={item.path}
-                end={item.path === '/'}
+                to={suite.path}
                 className={({ isActive }) => (isActive ? 'active' : '')}
               >
-                <span className="icon">{item.icon}</span>
-                <span className="label">{item.label}</span>
+                <span className="icon">{suite.icon}</span>
+                <span className="label">{suite.label}</span>
               </NavLink>
             </li>
           ))}
@@ -28,15 +27,14 @@ export default function Shell() {
       </main>
 
       <nav className="bottom-nav">
-        {NAV_ITEMS.map((item) => (
+        {SUITES.map((suite) => (
           <NavLink
-            key={item.path}
-            to={item.path}
-            end={item.path === '/'}
+            key={suite.path}
+            to={suite.path}
             className={({ isActive }) => (isActive ? 'active' : '')}
           >
-            <span className="icon">{item.icon}</span>
-            <span className="label">{item.label}</span>
+            <span className="icon">{suite.icon}</span>
+            <span className="label">{suite.label}</span>
           </NavLink>
         ))}
       </nav>
